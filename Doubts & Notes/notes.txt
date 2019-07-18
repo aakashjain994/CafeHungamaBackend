@@ -1,0 +1,15 @@
+    // https://stackoverflow.com/questions/23476239/mongoose-schema-workaround-for-multidimensional-array?lq=1
+    // https://stackoverflow.com/questions/22223345/multi-dimensional-array-in-mongoose-schema
+
+1. Notifications should be a column as an array in each of client, user & admin collection.
+
+2. var Booking = new Booking;
+
+// now you have to tell mongoose that the value has changed
+    // because with Mixed types it's not done automatically...
+
+Booking.slot_price_table.push([block1, block2]);
+// now you have to tell mongoose that the value has changed
+    // because with Mixed types it's not done automatically...
+    Booking.markModified('slot_price_table');
+Booking.save();

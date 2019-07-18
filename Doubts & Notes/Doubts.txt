@@ -1,0 +1,7 @@
+1. There should be client_id in all client routes like while creating which client is creating it bcz for example take the CRUD 
+    of an event then it should be added to the database in the events of that particular client, 
+    so the client id would be taken as in route URL kno ?? 
+
+2.  // Bookings Model: 
+   How to make sure that this is gonna be the structure of ecah object entered in the table
+    ticketSold: 
