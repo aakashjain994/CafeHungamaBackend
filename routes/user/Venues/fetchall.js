@@ -1,9 +1,12 @@
 const router = require('express').Router();
-const Events = require('../../../models/event');
+const Venues = require('../../../models/venue');
+
+
+
 router.get('/',(req,res)=>{
-    Events.find({})
-    .then(Events=>{
-        return res.status(200).json(Events);
+    Venues.find({})
+    .then(venues=>{
+        return res.status(200).json(venues);
     })
     .catch(err=>{
         console.log('error fetching events data',err);

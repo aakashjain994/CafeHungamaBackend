@@ -1,14 +1,17 @@
 const router = require('express').Router()
-const Events = require('../../../models/event');
+const Venues = require('../../../models/venue');
+const Bookings = require('../../../models/booking');
+
 router.use('/all', require('./fetchall'))
 router.use('/search', require('./search'))
 
-router.get('/:id',(req,res)=>{
+router.get('/:id',async (req,res)=>{
     //console.log(req.params.id);
-    const eventId = req.params.id;
-    Events.findOne({_id:eventId})
-    .then(Events=>{
-        return res.status(200).json(Events);
+    const venueId = req.params.id;
+    //const clientsId = await Venues.findOne({_id:eventId}).select('clientId -_id');
+    //console.log(clientsId);
+    Bookings.find({venueId:venueId}).then(venues=>{
+        return res.status(200).json(venues);
     })
     .catch(err=>{
         console.log('error fetching events data',err);
