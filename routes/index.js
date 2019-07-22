@@ -13,7 +13,7 @@ routes.get('/', (req,res)=> {
     Venue.find({
         city: "delhi"
     }, (err,docs) => {
-        console.log(docs);
+        res.json(docs);
     });
 });
 

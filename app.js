@@ -16,7 +16,7 @@ const express        = require('express'),
 // });
       
 
-mongoose.connect('mongodb://localhost/EVENTS' ,{useNewUrlParser: true})
+mongoose.connect('mongodb://localhost/EVENTS' ,{useNewUrlParser: true, useMongoClient : true})
 
 const app = express();
      
@@ -26,6 +26,7 @@ mongoose.set('useCreateIndex', true);
 
 //  Connect all our routes to our application
 const routes = require('./routes/index');
+require('./auth/auth');
 
       
 // view engine setup
@@ -34,6 +35,10 @@ app.use(methodOverride("_method"))
 // app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 app.use(express.static(__dirname + "/public"));
+
+//We plugin our jwt strategy as a middleware so only verified users can access this route
+// const secureRoute = require('./routes/secure-route');
+//app.use('/user', passport.authenticate('jwt', { session : false }), secureRoute );
 
 app.use('/', routes);
 const port = process.env.PORT || 5000;
