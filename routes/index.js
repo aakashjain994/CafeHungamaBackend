@@ -9,12 +9,7 @@ routes.use('/client', clientRoutes);
 routes.use('/user', userRoutes);
 
 routes.get('/', (req,res)=> {
-    console.log("hey")
-    Venue.find({
-        city: "delhi"
-    }, (err,docs) => {
-        res.json(docs);
-    });
+    res.json("Home page")
 });
 
 module.exports = routes;
