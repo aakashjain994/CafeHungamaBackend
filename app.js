@@ -8,15 +8,15 @@ const express        = require('express'),
       Admin          = require('./models/admin'),
       LocalStrategy  = require('passport-local');
       
-// mongoose.connect('mongodb+srv://Manvi_Tyagi:manvi8384@cluster0-lwpy4.mongodb.net/test?retryWrites=true&w=majority' ,{useNewUrlParser: true}, (err) =>{
-//     if(err)
-//     console.log(err);
-//     else
-//     console.log("mongo atlas connected")
-// });
+mongoose.connect('mongodb+srv://Manvi_Tyagi:manvi8384@cluster0-lwpy4.mongodb.net/test?retryWrites=true&w=majority' ,{useNewUrlParser: true}, (err) =>{
+    if(err)
+    console.log(err);
+    else
+    console.log("mongo atlas connected")
+});
       
 
-mongoose.connect('mongodb://localhost/EVENTS' ,{useNewUrlParser: true, useMongoClient : true})
+//mongoose.connect('mongodb://localhost/EVENTS' ,{useNewUrlParser: true})
 
 const app = express();
      

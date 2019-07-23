@@ -4,6 +4,7 @@ const router = require("express").Router({ mergeParams: true }),
 
 //see bankDetails by client id
 router.get("/", (req, res) => {
+  console.log("finding client id");
   BankDetails.find(
     {
       clientId: req.params.client_id
