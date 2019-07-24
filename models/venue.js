@@ -29,8 +29,7 @@ const venueSchema = new mongoose.Schema({
   },
   line1: {
     type: String,
-    required: true,
-    minlength: 2
+    required: false
   },
   line2: {
     type: String,

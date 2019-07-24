@@ -1,5 +1,5 @@
 const router = require("express").Router({ mergeParams: true });
 
-router.use("/", require("./manage"));
+router.use("/", require("./filter"));
 
 module.exports = router;

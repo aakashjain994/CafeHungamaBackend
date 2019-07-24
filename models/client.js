@@ -18,7 +18,7 @@ const clientSchema = new Schema({
     required: false,
     minlength: 2
   },
-  username: {
+  userName: {
     type: String,
     default: function() {
       return this.firstName + this.lastName;
@@ -63,6 +63,10 @@ const clientSchema = new Schema({
     type: String,
     required: true,
     minlength: 2
+  },
+  companyName: {
+    type: String,
+    required: true,
   },
   pending_pay: {
     type: Number
