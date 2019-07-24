@@ -15,10 +15,14 @@ const eventSchema = new mongoose.Schema({
     //     type: mongoose.Schema.Types.ObjectId,
     //     ref: Client
     // },
+    img:
+      { data: Buffer,
+        contentType: String
+    },
     name: {
         type: String,
         required: true
-    },  
+    },
     desc: {
         type: String,
         required: true
@@ -71,7 +75,7 @@ const eventSchema = new mongoose.Schema({
         default: 0
     },
    /// ref coupon &voucher
-    
+
 });
 
 

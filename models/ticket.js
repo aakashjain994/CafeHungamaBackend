@@ -1,28 +1,34 @@
-const mongoose = require('mongoose'),
-User   = require('./user'),
-Coupon = require('./coupon'),
-Voucher = require('./voucher'),
-Event = require('./event');
-
-
+const mongoose = require('mongoose');
+User   = require('./user');
+Coupon = require('./coupon');
+Voucher = require('./voucher');
+Venue = require('./venue');
 
 const ticketSchema = new mongoose.Schema({
     user:{
         type: mongoose.Schema.Types.ObjectId,
         ref: User
     },
-    eventId:{
+    status:{
+        type:String,
+        default:'not confirmed'
+    },
+    venueId:{
         type: mongoose.Schema.Types.ObjectId,
-        ref: Event
+        ref: Venue
     },
     ticketMRP: {
         type: Number,
         required: true
     },
-    
+
     soldPrice: {
         type: Number,
         required: true
+    },
+    timeSlot:{
+        type:[String],
+        required:true
     },
     couponId: [{
         type: mongoose.Schema.Types.ObjectId,
@@ -32,7 +38,7 @@ const ticketSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: Voucher
     }],
-    
+
 
     //incomplete
 
