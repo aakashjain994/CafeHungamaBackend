@@ -16,6 +16,7 @@ router.get('/', (req,res) => {
     });
 });
 
+
 router.put('/', (req,res)=> {
     Client.findByIdAndUpdate(req.params.client_id, req.body, (err,updatedProfile)=> {
         if(err){

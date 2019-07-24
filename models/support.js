@@ -18,6 +18,15 @@ const supportSchema = new mongoose.Schema({
     type: Number,
     required: true
   },
+  date: {
+    type: Date,
+   // required: true,
+  },
+  status: {
+    type: String,
+    required: true,
+    default: "pending",
+  },
   clientId: {
       type: ObjectId,
       ref: 'Client'

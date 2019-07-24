@@ -64,6 +64,9 @@ const clientSchema = new Schema({
     required: true,
     minlength: 2
   },
+  pending_pay: {
+    type: Number
+  },
   queries: [
     {
       type: String

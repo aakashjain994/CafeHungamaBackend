@@ -4,6 +4,7 @@ const router = require("express").Router({ mergeParams: true }),
 
 //see bankDetails by client id
 router.get("/", (req, res) => {
+  console.log("finding client id");
   BankDetails.find(
     {
       clientId: req.params.client_id
@@ -21,11 +22,7 @@ router.get("/", (req, res) => {
 //after auth req.user will have the authenticated user
 router.post("/", (req, res) => {
   console.log(req.params);
-  const {
-    bank,
-    account_no,
-    branch
-  } = req.body;
+  const { bank, account_no, branch } = req.body;
   const newBankDetails = {
     bank,
     account_no,
@@ -51,8 +48,6 @@ router.post("/", (req, res) => {
   });
 });
 
-
-
 // router.put("/:bankdetail_id", (req, res) => {
 //     console.log("pahoceh")
 //     console.log(req.params.bankdetail_id)
@@ -65,18 +60,16 @@ router.post("/", (req, res) => {
 //     });
 //   });
 
-
 //DELETE COMMENT
-router.delete("/:bankdetail_id" , (req, res)=>{
-    BankDetails.findByIdAndRemove(req.params.bankdetail_id, function(err){
-        if(err){
-            res.send(err);
-            console.log(err);
-        }else{
-            res.send("deleted");
-        }
-    })
- })
- 
+router.delete("/:bankdetail_id", (req, res) => {
+  BankDetails.findByIdAndRemove(req.params.bankdetail_id, function(err) {
+    if (err) {
+      res.send(err);
+      console.log(err);
+    } else {
+      res.send("deleted");
+    }
+  });
+});
 
 module.exports = router;
