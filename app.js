@@ -10,12 +10,13 @@ mongoose.connect('mongodb+srv://Manvi_Tyagi:manvi8384@cluster0-lwpy4.mongodb.net
     else
     console.log("mongo atlas connected")
 });
-      
+     
+
 
 //mongoose.connect('mongodb://localhost/EVENTS' ,{useNewUrlParser: true})
 
 const app = express();
-     
+
 mongoose.set('useNewUrlParser', true);
 mongoose.set('useFindAndModify', false);
 mongoose.set('useCreateIndex', true);
@@ -24,11 +25,11 @@ mongoose.set('useCreateIndex', true);
 const routes = require('./routes/index');
 require('./auth/auth');
 
-      
+
 // view engine setup
 app.set('view engine', 'ejs');
 app.use(methodOverride("_method"))
-// app.use(bodyParser.urlencoded({extended:true}));
+app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 app.use(express.static(__dirname + "/public"));
 

@@ -4,6 +4,9 @@ const mongoose = require("mongoose"),
   passportLocalMongoose = require("passport-local-mongoose");
 
 const userSchema = new mongoose.Schema({
+  _id:{
+    type:String
+  },
   firstName: {
     type: String,
     //required: true
@@ -72,9 +75,5 @@ userSchema.methods.isValidPassword = async function(password){
   const compare = await bcrypt.compare(password, user.password);
   return compare;
 }
-
-const UserModel = mongoose.model('user',userSchema);
-
-module.exports = UserModel;
 
 module.exports = mongoose.model("User", userSchema);
