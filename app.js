@@ -2,11 +2,7 @@ const express        = require('express'),
       mongoose       = require('mongoose'),
       bodyParser     = require('body-parser'),
       methodOverride = require('method-override'),
-      passport       = require('passport'),
-      User           = require('./models/user'),
-      Client         = require('./models/client'),
-      Admin          = require('./models/admin'),
-      LocalStrategy  = require('passport-local');
+      cors           = require('cors');
       
 mongoose.connect('mongodb+srv://Manvi_Tyagi:manvi8384@cluster0-lwpy4.mongodb.net/test?retryWrites=true&w=majority' ,{useNewUrlParser: true}, (err) =>{
     if(err)
@@ -40,6 +36,12 @@ app.use(express.static(__dirname + "/public"));
 // const secureRoute = require('./routes/secure-route');
 //app.use('/user', passport.authenticate('jwt', { session : false }), secureRoute );
 
+app.use(cors())
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+  });
 app.use('/', routes);
 const port = process.env.PORT || 5000;
 app.listen(port , (err) => {
