@@ -29,7 +29,7 @@ const bookingSchema = Schema({
           date: {
             type: Date
           },
-          time_slot: {
+          time_slots: {
             type: String
           },
           ticket_sold: {
