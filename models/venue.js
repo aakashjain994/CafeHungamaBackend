@@ -23,10 +23,6 @@ const venueSchema = new mongoose.Schema({
     min: 1,
     max: 100
   },
-  street_block: {
-    type: String,
-    required: false
-  },
   line1: {
     type: String,
     required: false
@@ -78,7 +74,9 @@ const venueSchema = new mongoose.Schema({
     required: true,
     validate: [validatePhone, "Please fill a valid phone number"]
   },
-  image: [String],
+  image: {
+    type: String
+  },
   verified: {
     type: Boolean,
     default: false

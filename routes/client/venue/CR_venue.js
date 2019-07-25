@@ -25,11 +25,13 @@ router.post("/", (req, res) => {
     street_block,
     line1,
     line2,
+    eventType,
     city,
     state,
     country,
     pinCode,
-    venueContact
+    venueContact,
+    amenities
   } = req.body;
   const newVenue = {
     image,
@@ -39,11 +41,13 @@ router.post("/", (req, res) => {
     street_block,
     line1,
     line2,
+    eventType,
     city,
     state,
     country,
     pinCode,
     venueContact,
+    amenities,
     clientId: req.params.client_id
   };
 
