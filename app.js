@@ -11,8 +11,6 @@ mongoose.connect('mongodb+srv://Manvi_Tyagi:manvi8384@cluster0-lwpy4.mongodb.net
     console.log("mongo atlas connected")
 });
      
-
-
 //mongoose.connect('mongodb://localhost/EVENTS' ,{useNewUrlParser: true})
 
 const app = express();
