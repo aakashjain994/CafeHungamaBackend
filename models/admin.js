@@ -27,10 +27,9 @@ const adminSchema = new Schema({
     type: Number
     //required : true,
   },
-  createdClients: [
+  notifications: [
     {
-      type: ObjectId,
-      ref: 'Client'
+      type: String
     }
   ]
 });

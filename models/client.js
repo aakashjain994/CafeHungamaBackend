@@ -66,7 +66,7 @@ const clientSchema = new Schema({
   },
   companyName: {
     type: String,
-    required: true,
+    required: true
   },
   pending_pay: {
     type: Number
@@ -92,6 +92,45 @@ const clientSchema = new Schema({
     {
       type: ObjectId,
       ref: "Booking"
+    }
+  ],
+  eventsNotifications: [
+    {
+      type: String
+    }
+  ],
+  requestNotifications: [
+    {
+      type: String
+    }
+  ],
+  paymentNotifications: [
+    {
+      type: String
+    }
+  ],
+  paymentDetails: [
+    {
+      transaction_id: {
+        type: Number,
+        required: true
+      },
+      date: {
+        type: Date,
+        required: true
+      },
+      amount: {
+        type: Number,
+        required: true
+      },
+      opening_balance: {
+        type: Number,
+        required: true
+      },
+      closing_balance: {
+        type: Number,
+        required: true
+      }
     }
   ]
 });
