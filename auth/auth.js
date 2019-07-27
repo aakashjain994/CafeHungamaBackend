@@ -16,7 +16,8 @@ passport.use('signup', new localStrategy({
       //Send the user information to the next middleware
       return done(null, user);
     } catch (error) {
-      done(error);
+      // done(error);
+      return error;
     }
 }));
 

@@ -78,6 +78,10 @@ const venueSchema = new mongoose.Schema({
   image: {
     type: String
   },
+  status:{
+    type: String,
+    default: "enabled"
+  },
   verified: {
     type: Boolean,
     default: false
