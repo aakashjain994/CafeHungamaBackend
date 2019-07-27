@@ -21,11 +21,13 @@ router.get("/", (req, res) => {
 
 //after auth req.user will have the authenticated user
 router.post("/", (req, res) => {
-  console.log(req.params);
-  const { bank, account_no, branch } = req.body;
+  // console.log(req.params);
+  const { bank, account_no, branch, ifsc_code, contact_no} = req.body;
   const newBankDetails = {
     bank,
     account_no,
+    ifsc_code,
+    contact_no,
     branch,
     clientId: req.params.client_id
   };

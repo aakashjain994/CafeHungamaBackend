@@ -9,6 +9,12 @@
 //7. 
 //8. 
 
-const express = require('express'),
-      Client = require('../../../models/client'),
-      pay
+const router = require('express').Router({mergeParams:true}),
+      Client = require('../../../models/client');
+
+router.get('/stats' , async(req,res)=> {
+    await Client
+})
+
+module.exports = router;
+      

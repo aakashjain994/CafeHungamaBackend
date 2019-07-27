@@ -14,7 +14,7 @@ const bankDetails = new Schema({
         required: true
     },
     ifsc_code: {
-        type: Number,
+        type: String,
         required: true,
     },
     branch: {

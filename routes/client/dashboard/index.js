@@ -1,5 +1,5 @@
-const router = require('express').Router();
+const router = require('express').Router({mergeParams:true});
 
-//router.use('/',require('./cards_data'));
+router.use('/',require('./cards_data'));
 
 module.exports = router;
