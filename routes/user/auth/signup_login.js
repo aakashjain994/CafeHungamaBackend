@@ -11,7 +11,7 @@ router.post(
   "/signup",
   passport.authenticate("signup", { session: false }),
   async (req, res, next) => {
-    console.log("hello user signing up");
+    // console.log("hello user signing up");
     // check("username").isEmail(), check("password").isLength({ min: 5 });
     res.json({
       message: "Signup successful",

@@ -1,6 +1,9 @@
 const mongoose = require("mongoose"),
   Schema = mongoose.Schema,
-  ObjectId = Schema.Types.ObjectId;
+  ObjectId = Schema.Types.ObjectId,
+  EventNotification = require("./eventNotification");
+
+// import { Schema } from "mongoose";
 
 var validatePhone = function(contact) {
   var re = /^\d{10}$/;
@@ -94,19 +97,22 @@ const clientSchema = new Schema({
       ref: "Booking"
     }
   ],
-  eventsNotifications: [
+  eventNotifications: [
     {
-      type: String
+      type: ObjectId,
+      ref: "EventNotification"
     }
   ],
   requestNotifications: [
     {
-      type: String
+      type: ObjectId,
+      ref: "RequestNotification"
     }
   ],
   paymentNotifications: [
     {
-      type: String
+      type: ObjectId,
+      ref: "PaymentNotification"
     }
   ],
   paymentDetails: [

@@ -12,6 +12,12 @@ const userSchema = new mongoose.Schema({
     type: String
     //required : false
   },
+  userName: {
+    type: String,
+    default: function() {
+      return this.firstName + this.lastName;
+    }
+  },
   email: {
     type: String,
     required : true,
