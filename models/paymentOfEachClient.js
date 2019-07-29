@@ -1,4 +1,6 @@
-import { Schema, Mongoose } from "mongoose";
+const mongoose = require('mongoose'),
+      Schema   = mongoose.Schema,
+      ObjectId = Schema.Types.ObjectId;
 
 const paymentDetailSchema = new Schema({
   transaction_id: {
@@ -20,7 +22,11 @@ const paymentDetailSchema = new Schema({
   closing_balance: {
     type: Number,
     required: true
+  },
+  client: {
+    type: ObjectId,
+    ref: "Client"
   }
 });
 
-module.exports = Mongoose.model("PaymentDetail", paymentDetailSchema);
+module.exports = mongoose.model("PaymentDetail", paymentDetailSchema);
