@@ -28,8 +28,6 @@ router.get("/event", async (req, res, next) => {
 
 
 
-
-
 //using then catch
 // router.get("/event", (req,res,next)=> {
 //     Client.findById(req.params.client_id)
@@ -53,3 +51,5 @@ router.get("/event", async (req, res, next) => {
 // });
 
 module.exports = router;
+
+

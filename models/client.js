@@ -1,7 +1,6 @@
 const mongoose = require("mongoose"),
   Schema = mongoose.Schema,
-  ObjectId = Schema.Types.ObjectId,
-  EventNotification = require("./eventNotification");
+  ObjectId = Schema.Types.ObjectId;
 
 // import { Schema } from "mongoose";
 
@@ -116,28 +115,10 @@ const clientSchema = new Schema({
     }
   ],
   paymentDetails: [
-    {
-      transaction_id: {
-        type: Number,
-        required: true
-      },
-      date: {
-        type: Date,
-        required: true
-      },
-      amount: {
-        type: Number,
-        required: true
-      },
-      opening_balance: {
-        type: Number,
-        required: true
-      },
-      closing_balance: {
-        type: Number,
-        required: true
-      }
-    }
+   {
+     type: ObjectId,
+     ref: "PaymentDetail"
+   }
   ]
 });
 

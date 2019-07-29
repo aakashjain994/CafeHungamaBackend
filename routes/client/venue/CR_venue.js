@@ -31,7 +31,8 @@ router.post("/", (req, res) => {
     country,
     pinCode,
     venueContact,
-    amenities
+    amenities,
+    maxCapacity
   } = req.body;
   const newVenue = {
     image,
@@ -48,6 +49,7 @@ router.post("/", (req, res) => {
     pinCode,
     venueContact,
     amenities,
+    maxCapacity,
     clientId: req.params.client_id
   };
 

@@ -1,6 +1,7 @@
 const router = require('express').Router({mergeParams:true});
 
-router.use('/:superadmin_id/clients',require('./clients'));
+router.use('/',require('./CRUD'));
+router.use('/',require('./filter'));
 
 
 module.exports = router;
