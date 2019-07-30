@@ -18,19 +18,19 @@ const supportSchema = new mongoose.Schema({
     type: Number,
     required: true
   },
-  date: {
+  createdAt: {
     type: Date,
-   // required: true,
+    default: Date.now
   },
   status: {
     type: String,
     required: true,
-    default: "pending",
+    default: "pending"
   },
   clientId: {
-      type: ObjectId,
-      ref: 'Client'
+    type: ObjectId,
+    ref: "Client"
   }
 });
 
-module.exports = mongoose.model("Support",supportSchema);
+module.exports = mongoose.model("Support", supportSchema);

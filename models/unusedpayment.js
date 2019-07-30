@@ -1,10 +1,8 @@
+//NOT USED ANYWHWERE TILL NOW, I DON'T KNOW IT WILL BE USED OR NOT
+
+
 const mongoose = require('mongoose');
    Client= require('./client');
-// Coupon = require('./coupon'),
-// Voucher = require('./voucher'),
-// Event = require('./event');
-
-
 
 const paymentSchema = new mongoose.Schema({
     client: {

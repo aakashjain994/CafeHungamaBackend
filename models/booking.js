@@ -32,7 +32,7 @@ const bookingSchema = Schema({
           time_slots: {
             type: String
           },
-          ticket_sold: {
+          tickets_sold: {
             type: Number,
             default: 0
           },

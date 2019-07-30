@@ -13,3 +13,12 @@ Booking.slot_price_table.push([block1, block2]);
     // because with Mixed types it's not done automatically...
     Booking.markModified('slot_price_table');
 Booking.save();
+
+3. Filter object properties by key in ES6
+    https://stackoverflow.com/a/45898081/9144345
+
+4. package-lock.json conflicts are super easy to resolve! Just run this command:
+          $ npx npm-merge-driver install -g
+          
+5. 
+

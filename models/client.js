@@ -2,6 +2,8 @@ const mongoose = require("mongoose"),
   Schema = mongoose.Schema,
   ObjectId = Schema.Types.ObjectId;
 
+// import { Schema } from "mongoose";
+
 var validatePhone = function(contact) {
   var re = /^\d{10}$/;
   return contact == null || re.test(contact);
@@ -18,7 +20,7 @@ const clientSchema = new Schema({
     required: false,
     minlength: 2
   },
-  username: {
+  userName: {
     type: String,
     default: function() {
       return this.firstName + this.lastName;
@@ -64,6 +66,10 @@ const clientSchema = new Schema({
     required: true,
     minlength: 2
   },
+  companyName: {
+    type: String,
+    required: true
+  },
   pending_pay: {
     type: Number
   },
@@ -89,6 +95,30 @@ const clientSchema = new Schema({
       type: ObjectId,
       ref: "Booking"
     }
+  ],
+  eventNotifications: [
+    {
+      type: ObjectId,
+      ref: "EventNotification"
+    }
+  ],
+  requestNotifications: [
+    {
+      type: ObjectId,
+      ref: "RequestNotification"
+    }
+  ],
+  paymentNotifications: [
+    {
+      type: ObjectId,
+      ref: "PaymentNotification"
+    }
+  ],
+  paymentDetails: [
+   {
+     type: ObjectId,
+     ref: "PaymentDetail"
+   }
   ]
 });
 

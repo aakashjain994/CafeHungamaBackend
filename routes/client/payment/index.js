@@ -1,8 +1,7 @@
-const router = require('express').Router();
+const router = require('express').Router({mergeParams:true});
+// router.use('/',require('./monthlyPayment'));  // THEY MAY BE USED IN FUTURE , NOT USED TILL NOW
+// router.use('/',require('./tillNow'));
 
-//router.use('/',require('./CRUD_bank_details'));
-router.use('/',require('./monthlyPayment'));
-router.use('/',require('./tillNow'));
-
+router.use('/',require('./fetch_payment_details'));
 
 module.exports = router;

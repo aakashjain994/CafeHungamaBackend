@@ -17,18 +17,22 @@ router.get("/", (req, res) => {
 
 //after auth req.user will have the authenticated user
 router.post("/", (req, res) => {
-  console.log(req.params)
   const {
     image,
     verified,
     venueName,
     noOfScreens,
     street_block,
+    line1,
+    line2,
+    eventType,
     city,
     state,
     country,
     pinCode,
-    venueContact
+    venueContact,
+    amenities,
+    maxCapacity
   } = req.body;
   const newVenue = {
     image,
@@ -36,11 +40,16 @@ router.post("/", (req, res) => {
     venueName,
     noOfScreens,
     street_block,
+    line1,
+    line2,
+    eventType,
     city,
     state,
     country,
     pinCode,
     venueContact,
+    amenities,
+    maxCapacity,
     clientId: req.params.client_id
   };
 

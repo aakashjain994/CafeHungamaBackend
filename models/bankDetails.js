@@ -13,9 +13,17 @@ const bankDetails = new Schema({
         unique: true,
         required: true
     },
+    ifsc_code: {
+        type: String,
+        required: true,
+    },
     branch: {
         type: String,
         required: true
+    },
+    contact_no : {
+        type: Number,
+        required: false,
     },
     clientId: {
         type: ObjectId,
