@@ -13,18 +13,21 @@ const clientSchema = new Schema({
   firstName: {
     type: String,
     required: true,
-    minlength: 2
+    minlength: 2,
+    lowercase: true,
   },
   lastName: {
     type: String,
     required: false,
-    minlength: 2
+    minlength: 2,
+    lowercase: true,
   },
   userName: {
     type: String,
     default: function() {
       return this.firstName + this.lastName;
-    }
+    },
+    lowercase: true,
   },
   email: {
     type: String,
@@ -32,21 +35,23 @@ const clientSchema = new Schema({
     match: [
       /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
       "Please fill a valid email address"
-    ]
+    ],
+    lowercase: true,
   },
   contact: {
     type: Number,
     required: true,
-    validate: [validatePhone, "Please fill a valid phone number"]
+    validate: [validatePhone, "Please fill a valid phone number"],
   },
   alternateContact: {
     type: Number,
-    validate: [validatePhone, "Please fill a valid phone number"]
+    validate: [validatePhone, "Please fill a valid phone number"],
   },
   line1Add: {
     type: String,
     required: true,
-    minlength: 2
+    minlength: 2,
+    
   },
   line2Add: {
     type: String
