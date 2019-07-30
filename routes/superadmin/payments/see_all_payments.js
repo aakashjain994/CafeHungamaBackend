@@ -17,6 +17,7 @@ router.get("/get", async (req, res, next) => {
 
     const allPayments = await PaymentOfEachClient.find({});
       res.json(allPayments);
+      
     } catch (err) {
         // console.log(err);
       res.status(400).send(err.message);

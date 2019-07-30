@@ -12,7 +12,7 @@ const router = require("express").Router(),
       if (!client)
         return res.status(404).send("The client with given id was not found");
 
-        res.send(client.paymentDetails)
+        res.send({paymentDetails: client.paymentDetails,firstName: client.firstName,lastName: client.lastName,companyName: client.companyName})
   
         
     } catch (err) {
