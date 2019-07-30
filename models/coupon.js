@@ -4,7 +4,7 @@ Client   = require('./client');
 const couponSchema = new mongoose.Schema({
     client:{
         type: mongoose.Schema.Types.ObjectId,
-        ref: Client
+        ref: "Client"
     },
      code: {
         type: String,
