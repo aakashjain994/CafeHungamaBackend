@@ -21,10 +21,12 @@ router.get("/", async (req, res) => {
             userName,
             firstName,
             lastName,
-            pending_Pay,
-            companyName
+            pending_pay,
+            companyName,
+            email,
+            contact
           } = client;
-          let obj = { userName, firstName, lastName, pending_Pay, companyName };
+          let obj = { userName, firstName, lastName, pending_pay, companyName, email, contact};
           ansArr.push(obj);
         });
         return res.status(200).json(ansArr);
