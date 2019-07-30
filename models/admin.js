@@ -15,6 +15,6 @@ const adminSchema = new Schema({
     type: ObjectId,
     ref: "AdminProfile"
   }
-});
+}, {timestamps:true} );
 
 module.exports = mongoose.model("Admin", adminSchema);
