@@ -15,7 +15,9 @@ const venueSchema = new mongoose.Schema({
     type: String,
     unique: true,
     required: true,
-    minlength: 2
+    minlength: 2,
+    lowercase: true,
+
   },
   noOfScreens: {
     type: Number,

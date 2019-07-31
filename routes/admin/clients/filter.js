@@ -6,10 +6,10 @@ const express = require("express"),
 router.get("/", async (req, res) => {
   let { email, contact, firstName, lastName, venue } = req.query;
   let query = {};
-  if (email != null) query.email = email;
+  if (email != null) query.email = email.toLowerCase();
   if (contact != null) query.contact = contact;
-  if (firstName != null) query.firstName = firstName;
-  if (lastName != null) query.lastName = lastName;
+  if (firstName != null) query.firstName = firstName.toLowerCase();
+  if (lastName != null) query.lastName = lastName.toLowerCase();
 
   if (!(Object.entries(query).length === 0 && query.constructor === Object)) {
     // console.log("hey2");
@@ -38,7 +38,7 @@ router.get("/", async (req, res) => {
   }
 
   if (venue != null) {
-    let result = await Venue.find({ venueName: venue })
+    let result = await Venue.find({ venueName: venue.toLowerCase() })
       .populate("clientId")
       .then(venue => {
         // let obj = {

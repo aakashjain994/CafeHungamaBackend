@@ -1,5 +1,6 @@
 const router = require("express").Router(),
-  Admin = require("../../../models/admin");
+  Admin = require("../../../models/admin"),
+  adminProfile = require("../../../models/adminProfile");
 
 router.post("/create", async (req, res, next) => {
   try {
@@ -16,7 +17,7 @@ router.post("/create", async (req, res, next) => {
 //see the list of all Admins
 router.get("/get", async (req, res, next) => {
   try {
-    const allAdmins = await Admin.find({});
+    const allAdmins = await Admin.find({}).populate("adminProfile");
     res.send(allAdmins);
   } catch (err) {
     res.status(400).send(err.message);
@@ -27,7 +28,7 @@ router.get("/get", async (req, res, next) => {
 router.get("/:admin_id/get", async (req, res, next) => {
   try {
     // console.log("yes here");
-    const admin = await Admin.findById(req.params.admin_id);
+    const admin = await Admin.findById(req.params.admin_id).populate("adminProfile");
 
     if (!admin)
       return res.status(404).send("The admin with given id was not found");
