@@ -45,10 +45,10 @@ passport.use('login', new localStrategy({
     return done(error);
   }
 }));
-    
+
 
 //This verifies that the token sent by the user is valid
-passport.use(new JWTstrategy({
+/*passport.use(new JWTstrategy({
   //secret we used to sign our JWT
   secretOrKey : 'top_secret',
   //we expect the user to send the token as a query paramater with the name 'secret_token'
@@ -56,8 +56,9 @@ passport.use(new JWTstrategy({
 }, async (token, done) => {
   try {
     //Pass the user details to the next middleware
+    console.log(token.user);
     return done(null, token.user);
   } catch (error) {
     done(error);
   }
-}));
+}));*/

@@ -3,6 +3,7 @@ const mongoose = require("mongoose"),
   Schema = mongoose.Schema,
   Mixed = Schema.Types.Mixed,
   ObjectId = Schema.Types.ObjectId;
+  Ticket = require('../models/ticket');
 
 const bookingSchema = Schema({
   //how to ensure combination of venueId & screen is unique
@@ -47,6 +48,10 @@ const bookingSchema = Schema({
           },
           confirmed_count: {
             type: Number
+          },
+          tickets_booked:{
+            type:[Ticket],
+            default:[]
           }
         }
       ]

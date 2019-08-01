@@ -21,7 +21,9 @@ const ticketSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
-
+    date:{
+        type:Date
+    },
     soldPrice: {
         type: Number,
         required: true
