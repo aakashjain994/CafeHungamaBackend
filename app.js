@@ -3,9 +3,11 @@ const express = require("express"),
   bodyParser = require("body-parser"),
   methodOverride = require("method-override"),
   cors = require("cors");
+  jwt = require('jsonwebtoken');
 
 db = mongoose.connect(
-  "mongodb+srv://Manvi_Tyagi:abcd@cluster0-lwpy4.mongodb.net/test?retryWrites=true&w=majority",
+  //"mongodb+srv://Manvi_Tyagi:abcd@cluster0-lwpy4.mongodb.net/test?retryWrites=true&w=majority",
+  'mongodb://localhost/EVENTS',
   { useNewUrlParser: true },
   err => {
     if (err) console.log(err);
@@ -46,7 +48,34 @@ app.use(function(req, res, next) {
   );
   next();
 });
-app.use("/", routes);
+app.use("/",verifyToken,routes);
+
+function verifyToken(req, res, next) {
+  // Get auth header value
+  const bearerHeader = req.headers['authorization'];
+  // Check if bearer is undefined
+  if(typeof bearerHeader !== 'undefined') {
+    // Split at the space
+    const bearer = bearerHeader.split(' ');
+    // Get token from array
+    const bearerToken = bearer[1];
+    // Set the token
+    req.token = bearerToken;
+    // Next middleware
+    jwt.verify(req.token,'top_secret',(err,authData)=>{
+      if(err){
+        res.sendStatus(403);
+      }
+        else{
+          req.user = authData.user;
+        }
+    })
+    next();
+  } else {
+    // Forbidden
+    res.sendStatus(403);
+  }
+}
 const port = process.env.PORT || 5000;
 app.listen(port, err => {
   if (err) console.log(err);
