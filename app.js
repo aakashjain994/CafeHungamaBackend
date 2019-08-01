@@ -6,7 +6,8 @@ const express = require("express"),
   jwt = require('jsonwebtoken');
 
 db = mongoose.connect(
-  "mongodb+srv://Manvi_Tyagi:abcd@cluster0-lwpy4.mongodb.net/test?retryWrites=true&w=majority",
+  /*"mongodb+srv://Manvi_Tyagi:abcd@cluster0-lwpy4.mongodb.net/test?retryWrites=true&w=majority",*/
+  'mongodb://localhost/EVENTS',
   { useNewUrlParser: true },
   err => {
     if (err) console.log(err);
