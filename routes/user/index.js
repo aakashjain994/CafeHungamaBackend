@@ -7,6 +7,7 @@ router.use('/',require('./auth'));
 router.use('/venues',require('./Venues'));
 router.use('/amenities',require('./amenities'));
 router.use('/cities',require('./cities_localities.js'));
+router.use('/orders',require('./orders')); //should verify token here
 
 function verifyToken(req, res, next) {
     // Get auth header value
