@@ -11,12 +11,14 @@ const express = require("express"),
    //Ticket.find({user)
 //});
 
-router.get('/:id',(req,res)=>{
+router.get('/',(req,res)=>{
          console.log(req.params.id);
       //  const userId = req.user._id;
         const bookingdetails = [];
        // console.log(userId);
-        Ticket.find({user:req.params.id}).select('timeSlot ticketMRP status venueId -_id ')
+        console.log(req.user);
+        const userId = req.user._id;
+        Ticket.find({user:userId}).select('timeSlot ticketMRP status venueId -_id ')
         .then(async bookings=>{
           for(let i of bookings){
 
@@ -25,6 +27,7 @@ router.get('/:id',(req,res)=>{
           const venue = await Venue.findOne({_id:i.venueId}).select('venueName eventType');
           console.log(bookings)
          // console.log(venue,i);
+         if(venue!==null){
           const bookingDetails = {}
           //Object.assign() and destructuring are not working
           bookingDetails['eventType'] = venue['eventType'];
@@ -33,7 +36,8 @@ router.get('/:id',(req,res)=>{
           bookingDetails['timeSlot'] = i['timeSlot'];
           bookingDetails['ticketMRP'] = i['ticketMRP'];
           bookingdetails.push(bookingDetails);
-          }
+         }
+        }
           //console.log(bookings);
           res.status(200).json(bookingdetails);
         })

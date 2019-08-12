@@ -47,7 +47,8 @@ const bookingSchema = Schema({
             type: Number
           },
           confirmed_count: {
-            type: Number
+            type: Number,
+            default:0
           },
           tickets_booked:{
             type:[Ticket],
