@@ -23,16 +23,17 @@ function verifyToken(req, res, next) {
       // Next middleware
       jwt.verify(req.token,'top_secret',(err,authData)=>{
         if(err){
-          res.sendStatus(403);
+          console.log(err);
+          return res.sendStatus(403);
         }
-          else{
+        else{
             req.user = authData.user;
-          }
+        }
       })
       next();
     } else {
       // Forbidden
-      res.sendStatus(403);
+      return res.sendStatus(403);
     }
   }
 

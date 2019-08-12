@@ -40,10 +40,17 @@ const ticketSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: Voucher
     }],
-
-
+    number:{
+        type:Number
+    }
     //incomplete
 
-});
+}
+);
+/*ticketSchema.index({createdAt:1},{expireAfterSeconds:10});
+
+ticketSchema.pre('remove', { document: true }, function() {
+    console.log('Removing doc!');
+});*/
 
 module.exports = mongoose.model("Ticket",ticketSchema);
