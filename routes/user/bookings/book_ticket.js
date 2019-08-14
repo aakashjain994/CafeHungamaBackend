@@ -2,12 +2,14 @@ const router = require('express').Router();
 const Ticket = require('../../../models/ticket');
 const Booking = require('../../../models/booking');
 
+
 router.post('/',async (req,res)=>{
     //const id = req.user._id;
 
     //const user = id;
+
     console.log(req.user);
-    const user = req.user.id;
+    const user = req.user._id;
     const venueId = req.body.venueId;
     const ticketMRP = req.body.ticketMRP;
     const soldPrice = req.body.soldPrice;
@@ -92,6 +94,7 @@ router.post('/',async (req,res)=>{
 
 
       const {_id} = ticket;
+
       return res.status(200).json({_id,msg:'success'});
 
       //console.log(slot_price_table);

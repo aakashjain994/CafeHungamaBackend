@@ -5,11 +5,11 @@ const Booking = require('../../../models/booking');
 const Venue = require('../../../models/venue');
 
 
-router.get('/:id',async (req,res) =>{
+router.get('/',async (req,res) =>{
         const orders = [];
         const months = [0,31,28,31,30,31,30,31,31,30,31,30,31];
-        console.log(req.params.id);
-        Ticket.find({user:req.params.id}).select('timeSlot date ticketMRP status venueId -_id ')
+        //console.log(req.params.id);
+        Ticket.find({user:req.user._id}).select('timeSlot date ticketMRP status venueId -_id ')
         .then(async bookings=>{
             for(let i of bookings){
                 if(i.date){
@@ -18,6 +18,7 @@ router.get('/:id',async (req,res) =>{
                     console.log(compareTo);
                     const date = new Date().getTime();
                     if(compareTo - date > 0){
+                        console.log('foudn')
                         console.log(i.venueId);
                         const booking = await Booking.findOne({venueId:i.venueId});
                         const venue  = await Venue.findOne({_id:i.venueId});

@@ -3,8 +3,9 @@ const User = require('../../../models/user');
 const uuid = require('uuid/v4');
 
 
-router.get('/:id', (req, res, next) => {
-    const userId = req.params.id;
+router.get('/', (req, res, next) => {
+    console.log(req.user);
+    const userId = req.user._id;
 
     /*if (!validator.isUUID(userId)) {
       return res.status(400).json({msg: 'Invalid ID'})

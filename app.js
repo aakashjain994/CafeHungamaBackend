@@ -7,7 +7,7 @@ const express = require("express"),
 
 db = mongoose.connect(
   /*"mongodb+srv://Manvi_Tyagi:abcd@cluster0-lwpy4.mongodb.net/test?retryWrites=true&w=majority",*/
-  'mongodb://localhost/EVENTS',
+  'mongodb+srv://pioneering:mongopass123@clusterch-qq3jy.gcp.mongodb.net/test?retryWrites=true&w=majority',
   { useNewUrlParser: true },
   err => {
     if (err) console.log(err);
