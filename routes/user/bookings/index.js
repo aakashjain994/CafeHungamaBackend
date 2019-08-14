@@ -1,8 +1,17 @@
 const router = require('express').Router();
 const Ticket = require('../../../models/ticket');
 const Booking = require('../../../models/booking');
+const Venues = require('../../../models/venue');
 //router.use('/',require('./login'));
+var Pusher = require('pusher');
 
+var channels_client = new Pusher({
+  appId: '841453',
+  key: '2650b5b1610744e74733',
+  secret: 'b3615c743ef61a53ca4c',
+  cluster: 'ap2',
+  encrypted: true
+});
 
 async function remove_requested_users_from_remaining_slots(slot_price_table,slot,ticket,day){
   //console.log(slot_price_table);
@@ -87,7 +96,7 @@ router.post('/confirm',async (req,res)=>{
     const months = [0,31,28,31,30,31,30,31,31,30,31,30,31];
     const ticketId = req.body.ticketId;
     const fastFilling = req.body.fastFilling;
-    const ticket = await Ticket.findOne({_id:ticketId});
+    const ticket = await Ticket.findOne({_id:ticketId}).populate('venueId');
     console.log(fastFilling);
     if(fastFilling){
       ticket.status = 'Requested';
@@ -153,6 +162,11 @@ router.post('/confirm',async (req,res)=>{
     })*/
 //})
     await ticket.save();
+   // const venue = await Venues.findOne({_id:ticket.venueId});
+    console.log(req.user.email);
+    channels_client.trigger('booking',req.user.email, {
+      "message": ticket
+    });
     return res.status(200).json(ticket);
 })
 

@@ -1,13 +1,13 @@
 const router = require('express').Router();
 
 //router.use('/',require('./login'));
-router.use('/',require('./profile'));
-router.use('/bookings',verifyToken,require('./bookings'));
 router.use('/',require('./auth'));
+router.use('/profile',verifyToken,require('./profile'));
+router.use('/bookings',verifyToken,require('./bookings'));
 router.use('/venues',require('./Venues'));
 router.use('/amenities',require('./amenities'));
 router.use('/cities',require('./cities_localities.js'));
-router.use('/orders',require('./orders')); //should verify token here
+router.use('/orders',verifyToken,require('./orders')); //should verify token here
 
 function verifyToken(req, res, next) {
     // Get auth header value
